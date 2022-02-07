@@ -19,8 +19,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
-          gradle-version: init
+          arguments: init
+          gradle-version: current
           build-root-directory: boden/AwesomeApp
         
         
