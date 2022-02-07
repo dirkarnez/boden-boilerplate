@@ -22,10 +22,9 @@ jobs:
           arguments: |
             init
             build
-            tasks
           gradle-version: current
           build-root-directory: boden/AwesomeApp
           
       - name: Build
-        run: cd boden\AwesomeApp && dir
+        run: cd boden && python boden.py build -p android -t AwesomeApp && dir
         
