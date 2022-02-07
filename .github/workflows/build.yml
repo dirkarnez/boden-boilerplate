@@ -24,10 +24,21 @@ jobs:
       - name: Setup Gradle and init
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: |
-            init
-            wrapper
-            build
+          arguments: wrapper
+          gradle-version: 5.3.1
+          build-root-directory: boden/AwesomeApp
+          
+      - name: Setup Gradle and init
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: init
+          gradle-version: 5.3.1
+          build-root-directory: boden/AwesomeApp
+          
+      - name: Setup Gradle and init
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
           gradle-version: 5.3.1
           build-root-directory: boden/AwesomeApp
           
