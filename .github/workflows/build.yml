@@ -20,7 +20,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: build
-          gradle-version: 6
+          gradle-version: current
           build-root-directory: boden/AwesomeApp
         
         
