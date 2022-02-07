@@ -19,16 +19,12 @@ jobs:
       - name: Setup Gradle and init
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: init
+          arguments: |
+            init
+            build
           gradle-version: current
           build-root-directory: boden/AwesomeApp
           
       - name: Build
-        run: cd boden\AwesomeApp && gradlew build && dir
-        
-        
-        
-        
-        
-        
+        run: cd boden\AwesomeApp && dir
         
