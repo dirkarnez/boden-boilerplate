@@ -1,0 +1,13 @@
+name: boden-build-actions-workflow
+on: push
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Clone the Boden Repo
+        run: git clone --recurse-submodules https://github.com/AshampooSystems/boden.git
+        
+      - name: Generate and Open an IDE Project
+        run: cd boden && python boden.py new -n AwesomeApp && cd AwesomeApp && gradlew assembleDebug && dir
+        
+        
