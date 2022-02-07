@@ -19,7 +19,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: wrapper
+          arguments: build
+          gradle-version: 6
           build-root-directory: boden/AwesomeApp
         
         
