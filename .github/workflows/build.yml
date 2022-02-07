@@ -22,7 +22,7 @@ jobs:
           arguments: |
             init
             build
-            assembleDebug
+            tasks
           gradle-version: current
           build-root-directory: boden/AwesomeApp
           
