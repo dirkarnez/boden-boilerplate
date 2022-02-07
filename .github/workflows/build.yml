@@ -31,5 +31,5 @@ jobs:
           build-root-directory: boden/AwesomeApp
           
       - name: Build
-        run: cd boden && python boden.py build -p android -t AwesomeApp && dir
+        run: cd boden && set path=%PATH%;C:\Users\runneradmin\gradle-installations\installs\gradle-7.3.3\bin\ && python boden.py build -p android -t AwesomeApp && dir
         
