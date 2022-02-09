@@ -49,5 +49,15 @@ jobs:
           
       - name: Build
         shell: cmd
-        run: echo %PATH% && cd boden/AwesomeApp && gradle wrapper --gradle-version=5.3.1 && dir && python ../boden.py build -p android -t AwesomeApp 
+        run: echo %PATH% && cd boden/AwesomeApp && gradle wrapper --gradle-version=5.3.1 && dir && python ../boden.py build -p android -t AwesomeApp
+        
+      - name: Build2
+        shell: cmd
+        run: echo %PATH% && cd boden/AwesomeApp && gradlew assembleDebug 
+        
+      - name: Build3
+        shell: cmd
+        run: echo %PATH% && cd boden/AwesomeApp/ && dir 
+        
+      
         
