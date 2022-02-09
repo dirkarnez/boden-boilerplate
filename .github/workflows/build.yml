@@ -48,5 +48,5 @@ jobs:
           echo "C:/Users/runneradmin/gradle-installations/installs/gradle-5.3.1/bin/" >> $GITHUB_PATH
           
       - name: Build
-        run: cd boden/AwesomeApp && gradle && python ../boden.py build -p android -t AwesomeApp && dir 
+        run: echo %PATH% && cd boden/AwesomeApp && gradle wrapper --gradle-version=5.3.1 # cd boden/AwesomeApp && gradle && python ../boden.py build -p android -t AwesomeApp && dir 
         
