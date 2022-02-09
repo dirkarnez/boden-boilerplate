@@ -2,7 +2,7 @@ name: boden-build-actions-workflow
 on: push
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: windows-latest
     steps:
       - name: Clone the Boden Repo
         run: git clone --recurse-submodules https://github.com/AshampooSystems/boden.git
