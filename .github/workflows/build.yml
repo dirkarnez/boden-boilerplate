@@ -11,6 +11,15 @@ jobs:
       - name: Update Environment Variables
         shell: cmd
         run: cd /d C:\Android\android-sdk\ndk-bundle && dir
+        
+      - name: write
+        shell: bash
+        run: printf "ndk.dir=C\:\\Android\\android-sdk\\ndk-bundle\nsdk.dir=C\:\\Android\\android-sdk" > local.properties
+        
+      - name: read
+        shell: cmd
+        run: type local.properties
+        
 
 #       - name: Update Environment Variables
 #         shell: bash
