@@ -9,10 +9,10 @@ jobs:
 #         run: type local.properties
         
 
-      - name: Update Environment Variables
-        shell: bash
-        run: |
-          echo "ANDROID_NDK_HOME=" >> $GITHUB_ENV
+#       - name: Update Environment Variables
+#         shell: bash
+#         run: |
+#           echo "ANDROID_NDK_HOME=" >> $GITHUB_ENV
           
       - name: Clone the Boden Repo
         run: git clone --recurse-submodules https://github.com/dirkarnez/boden.git
