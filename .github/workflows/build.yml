@@ -14,7 +14,7 @@ jobs:
         
       - name: write
         shell: bash
-        run: printf "ndk.dir=C\:\\Android\\android-sdk\\ndk-bundle\nsdk.dir=C\:\\Android\\android-sdk" > local.properties
+        run: printf "ndk.dir=C\:\\\\Android\\\\android-sdk\\\\ndk-bundle\nsdk.dir=C\:\\\\Android\\\\android-sdk" > local.properties
         
       - name: read
         shell: cmd
