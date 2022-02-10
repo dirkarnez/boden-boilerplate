@@ -7,6 +7,10 @@ jobs:
       - name: Update Environment Variables
         shell: cmd
         run: cd /d C:\Android\android-sdk && dir
+        
+      - name: Update Environment Variables
+        shell: cmd
+        run: cd /d C:\Android\android-sdk\ndk-bundle && dir
 
 #       - name: Update Environment Variables
 #         shell: bash
