@@ -4,82 +4,74 @@ jobs:
   test:
     runs-on: windows-latest
     steps:
-      - name: Update Environment Variables
-        shell: cmd
-        run: cd /d C:\Android\android-sdk && dir
+#       - name: read
+#         shell: cmd
+#         run: type local.properties
         
+
       - name: Update Environment Variables
-        shell: cmd
-        run: cd /d C:\Android\android-sdk\ndk-bundle && dir
+        shell: bash
+        run: |
+          echo "ANDROID_NDK_HOME=" >> $GITHUB_ENV
+          
+      - name: Clone the Boden Repo
+        run: git clone --recurse-submodules https://github.com/dirkarnez/boden.git
+        
+      - name: Generate and Open an IDE Project
+        run: cd boden && python boden.py new -n AwesomeApp 
         
       - name: write
         shell: bash
-        run: printf "ndk.dir=C\:\\\\\\\\Android\\\\\\\\android-sdk\\\\\\\\ndk-bundle\nsdk.dir=C\:\\\\\\\\Android\\\\\\\\android-sdk" > local.properties
+        run: cd boden/AwesomeApp && printf "ndk.dir=C\:\\\\\\\\Android\\\\\\\\android-sdk\\\\\\\\ndk-bundle\nsdk.dir=C\:\\\\\\\\Android\\\\\\\\android-sdk" > local.properties
         
-      - name: read
+      - name: Set up JDK 8
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+          
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.12
+        with:
+          cmake-version: '3.19.x'
+          
+      - name: Setup Gradle and init
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: wrapper
+          gradle-version: 5.3.1
+          build-root-directory: boden/AwesomeApp
+          
+      - name: Setup Gradle and init
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: init
+          gradle-version: 5.3.1
+          build-root-directory: boden/AwesomeApp
+          
+      - name: Setup Gradle and init
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+          gradle-version: 5.3.1
+          build-root-directory: boden/AwesomeApp
+          
+      - name: Update Environment Variables
+        shell: bash
+        run: |
+          echo "C:/Users/runneradmin/gradle-installations/installs/gradle-5.3.1/bin/" >> $GITHUB_PATH
+          
+      - name: Build
         shell: cmd
-        run: type local.properties
+        run: echo %PATH% && cd boden/AwesomeApp && gradle wrapper --gradle-version=5.3.1 && dir && python ../boden.py build -p android -t AwesomeApp
         
-
-#       - name: Update Environment Variables
-#         shell: bash
-#         run: |
-#           echo "ANDROID_NDK_HOME=" >> $GITHUB_ENV
-          
-#       - name: Clone the Boden Repo
-#         run: git clone --recurse-submodules https://github.com/dirkarnez/boden.git
+      - name: Build2
+        shell: cmd
+        run: echo %PATH% && cd boden/AwesomeApp && gradlew assembleDebug 
         
-#       - name: Generate and Open an IDE Project
-#         run: cd boden && python boden.py new -n AwesomeApp 
-        
-#       - name: Set up JDK 8
-#         uses: actions/setup-java@v2
-#         with:
-#           java-version: '8'
-#           distribution: 'adopt'
-          
-#       - name: Setup cmake
-#         uses: jwlawson/actions-setup-cmake@v1.12
-#         with:
-#           cmake-version: '3.19.x'
-          
-#       - name: Setup Gradle and init
-#         uses: gradle/gradle-build-action@v2
-#         with:
-#           arguments: wrapper
-#           gradle-version: 5.3.1
-#           build-root-directory: boden/AwesomeApp
-          
-#       - name: Setup Gradle and init
-#         uses: gradle/gradle-build-action@v2
-#         with:
-#           arguments: init
-#           gradle-version: 5.3.1
-#           build-root-directory: boden/AwesomeApp
-          
-#       - name: Setup Gradle and init
-#         uses: gradle/gradle-build-action@v2
-#         with:
-#           arguments: build
-#           gradle-version: 5.3.1
-#           build-root-directory: boden/AwesomeApp
-          
-#       - name: Update Environment Variables
-#         shell: bash
-#         run: |
-#           echo "C:/Users/runneradmin/gradle-installations/installs/gradle-5.3.1/bin/" >> $GITHUB_PATH
-          
-#       - name: Build
-#         shell: cmd
-#         run: echo %PATH% && cd boden/AwesomeApp && gradle wrapper --gradle-version=5.3.1 && dir && python ../boden.py build -p android -t AwesomeApp
-        
-#       - name: Build2
-#         shell: cmd
-#         run: echo %PATH% && cd boden/AwesomeApp && gradlew assembleDebug 
-        
-#       - name: Build3
-#         shell: cmd
-#         run: echo %PATH% && cd boden/AwesomeApp/ && dir 
+      - name: Build3
+        shell: cmd
+        run: echo %PATH% && cd boden/AwesomeApp/ && dir 
         
       
         
