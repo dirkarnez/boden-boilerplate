@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Update Environment Variables
         shell: cmd
-        run: cd C:\Android\android-sdk && dir
+        run: cd /d C:\Android\android-sdk && dir
 
 #       - name: Update Environment Variables
 #         shell: bash
