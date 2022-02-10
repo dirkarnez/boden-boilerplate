@@ -7,7 +7,6 @@ jobs:
       - name: Update Environment Variables
         shell: bash
         run: |
-          echo "C:/Users/runneradmin/gradle-installations/installs/gradle-5.3.1/bin/" >> $GITHUB_PATH
           echo "ANDROID_NDK_HOME=" >> $GITHUB_ENV
           
       - name: NDK
