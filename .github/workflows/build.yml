@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: NDK
         shell: cmd
-        run: echo %ANDROID_NDK_HOME% && echo %ANDROID_HOME%
+        run: set ANDROID_NDK_HOME= && echo %ANDROID_NDK_HOME% && echo %ANDROID_HOME%
 #       - name: Clone the Boden Repo
 #         run: git clone --recurse-submodules https://github.com/dirkarnez/boden.git
         
